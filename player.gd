@@ -3,6 +3,10 @@ class_name Player
 
 @onready var ship_holder: ShipHolder = %ShipHolder
 
+@export_enum("N/A","Physical", "Magic - Ocean", "Magic - Storm", "Magic - Fire", "Magic - Resonance", "Magic - Spectral", "Magic - Ancient", "Magic - Arcane") var type_1: String
+@export_enum("N/A","Physical", "Magic - Ocean", "Magic - Storm", "Magic - Fire", "Magic - Resonance", "Magic - Spectral", "Magic - Ancient", "Magic - Arcane") var type_2: String
+
+
 func _ready() -> void:
 	ship_holder._test_stats()
 	print("Crew Members : " + str(ship_holder.cur_crew_members))

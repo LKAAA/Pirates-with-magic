@@ -6,6 +6,7 @@
 script = ExtResource("1_142nd")
 hull_damage = 150.0
 accuracy = 100
+ability_strength_percent = 0.0
 damage_type = 0
 canDisableCannons = false
 canStunCrew = false
@@ -20,7 +21,7 @@ lifeDrainAmount = 0
 canReduceEnemyAccuracy = false
 move_name = "Cannonball"
 move_description = "Shoots a single cannonball."
-move_type = 0
+move_type = "Physical"
 effect_chance = 0
 effect_duration = 0
 max_uses = 30

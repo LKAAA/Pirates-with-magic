@@ -14,6 +14,7 @@ var is_fleeing: bool = false
 
 var player_attack_moves: Array[AttackMoveData]
 var player_defense_moves: Array[DefenseMoveData]
+var player_shift_moves: Array[String]
 var player_max_hull_hp: int = 0
 var player_cur_hull_hp: int = 0
 var player_cur_crew_members: int = 0
@@ -33,6 +34,89 @@ var prev_enemy_move
 
 var enemy_damage_dealt
 var player_damage_dealt
+
+var type_chart: Dictionary = {
+	"Physical": {
+		"Physical": 1,
+		"Magic - Ocean": 1,
+		"Magic - Storm": 1,
+		"Magic - Fire": 1,
+		"Magic - Spectral": 0,
+		"Magic - Ancient": 1,
+		"Magic - Arcane": 1,
+		"Magic - Resonance": 1
+	},
+	"Magic - Ocean": {
+		"Physical": 1,
+		"Magic - Ocean": 0.5,
+		"Magic - Storm": 1,
+		"Magic - Fire": 2,
+		"Magic - Spectral": 1,
+		"Magic - Ancient": 1,
+		"Magic - Arcane": 1,
+		"Magic - Resonance": 1
+	},
+	"Magic - Storm": {
+		"Physical": 1,
+		"Magic - Ocean": 1,
+		"Magic - Storm": 1,
+		"Magic - Fire": 1,
+		"Magic - Spectral": 1,
+		"Magic - Ancient": 0.5,
+		"Magic - Arcane": 1,
+		"Magic - Resonance": 2
+	},
+	"Magic - Fire": {
+		"Physical": 2,
+		"Magic - Ocean": 0.5,
+		"Magic - Storm": 0.5,
+		"Magic - Fire": 0.5,
+		"Magic - Spectral": 1,
+		"Magic - Ancient": 1,
+		"Magic - Arcane": 1,
+		"Magic - Resonance": 1
+	},
+	"Magic - Spectral": {
+		"Physical": 1,
+		"Magic - Ocean": 1,
+		"Magic - Storm": 1,
+		"Magic - Fire": 1,
+		"Magic - Spectral": 0.5,
+		"Magic - Ancient": 1,
+		"Magic - Arcane": 2,
+		"Magic - Resonance": 1
+	},
+	"Magic - Ancient": {
+		"Physical": 2,
+		"Magic - Ocean": 1,
+		"Magic - Storm": 1,
+		"Magic - Fire": 1,
+		"Magic - Spectral": 1,
+		"Magic - Ancient": 1,
+		"Magic - Arcane": 1,
+		"Magic - Resonance": 0.5
+	},
+	"Magic - Arcane": {
+		"Physical": 0.5,
+		"Magic - Ocean": 1,
+		"Magic - Storm": 1,
+		"Magic - Fire": 1,
+		"Magic - Spectral": 2,
+		"Magic - Ancient": 1,
+		"Magic - Arcane": 0.5,
+		"Magic - Resonance": 1
+	},
+	"Magic - Resonance": {
+		"Physical": 1,
+		"Magic - Ocean": 1,
+		"Magic - Storm": 0.5,
+		"Magic - Fire": 1,
+		"Magic - Spectral": 1,
+		"Magic - Ancient": 2,
+		"Magic - Arcane": 1,
+		"Magic - Resonance": 1
+	}
+}
 
 signal battle_ended
 
@@ -282,6 +366,9 @@ func _calculate_hull_damage(chosen_move: AttackMoveData, attacker, defender) -> 
 	var defender_morale = _calculate_morale(defender)
 	var attacker_morale = _calculate_morale(attacker)
 	
+	var effectiveness = _determine_type_matchup(chosen_move, defender)
+	print("Effectiveness = " + str(effectiveness))
+	
 	if chosen_move.ignoreMagicalDefense:
 		var modifier: float = (100 - chosen_move.ability_strength_percent) * 0.01
 		print("Modifier: " + str(modifier))
@@ -298,16 +385,55 @@ func _calculate_hull_damage(chosen_move: AttackMoveData, attacker, defender) -> 
 	# BASE CALCULATIONS
 	if chosen_move.damage_type == 0: # Physical Damage
 		if defender.ship_holder.physical_defense_stat > 0:
-			damage_calculated = chosen_move.hull_damage * ((attacker.ship_holder.physical_attack_stat * attacker_morale) / (defender_physical_defense * defender_morale))
+			damage_calculated = chosen_move.hull_damage * ((attacker.ship_holder.physical_attack_stat * attacker_morale) / (defender_physical_defense * defender_morale)) * effectiveness
 			print("Attacker stat: " + str(attacker.ship_holder.physical_attack_stat))
 			print("Defender stat: " + str(defender.ship_holder.physical_defense_stat))
 	elif chosen_move.damage_type == 1: # Magical Damage
 		if defender.ship_holder.magical_defense_stat > 0:
-			damage_calculated = chosen_move.hull_damage * ((attacker.ship_holder.magical_attack_stat * attacker_morale) / (defender_magic_defense * defender_morale))
+			damage_calculated = chosen_move.hull_damage * ((attacker.ship_holder.magical_attack_stat * attacker_morale) / (defender_magic_defense * defender_morale)) * effectiveness
 			print("Attacker stat: " + str(attacker.ship_holder.magical_attack_stat))
 			print("Defender stat: " + str(defender.ship_holder.magical_defense_stat))
 	
 	return roundi(damage_calculated)
+
+func _determine_type_matchup(chosen_move, defender) -> float:
+	var effectiveness_1: float = 1
+	var effectiveness_2: float = 1
+	var final_effectiveness: float = 1
+	if defender == current_enemy:
+		print(defender.enemy_data.type_1)
+		print(defender.enemy_data.type_2)
+		if type_chart.has(chosen_move.move_type) and type_chart[chosen_move.move_type].has(defender.enemy_data.type_1):
+			effectiveness_1 = type_chart[chosen_move.move_type][defender.enemy_data.type_1]
+		if type_chart.has(chosen_move.move_type) and type_chart[chosen_move.move_type].has(defender.enemy_data.type_2):
+			effectiveness_2 = type_chart[chosen_move.move_type][defender.enemy_data.type_2]
+		
+		if effectiveness_1 == 2 or effectiveness_2 == 2:
+			final_effectiveness = 2
+		if effectiveness_1 == 0.5 or effectiveness_1 == 0.5:
+			final_effectiveness = 0.5
+		if effectiveness_1 == 0 or effectiveness_2 == 0:
+			final_effectiveness = 0
+		
+		return final_effectiveness
+	elif defender == player:
+		print(defender.type_1)
+		print(defender.type_2)
+		if type_chart.has(chosen_move.move_type) and type_chart[chosen_move.move_type].has(defender.type_1):
+			effectiveness_1 = type_chart[chosen_move.move_type][defender.type_1]
+		if type_chart.has(chosen_move.move_type) and type_chart[chosen_move.move_type].has(defender.type_2):
+			effectiveness_1 = type_chart[chosen_move.move_type][defender.type_2]
+		
+		if effectiveness_1 == 2 or effectiveness_2 == 2:
+			final_effectiveness = 2
+		if effectiveness_1 == 0.5 or effectiveness_1 == 0.5:
+			final_effectiveness = 0.5
+		if effectiveness_1 == 0 or effectiveness_2 == 0:
+			final_effectiveness = 0
+		
+		return final_effectiveness
+	
+	return 1.0  # Default to neutral if types aren't found
 
 func _calculate_morale(user) -> float:
 	var moral_float: float
@@ -346,7 +472,19 @@ func _give_rewards():
 
 func _flee_battle() -> void:
 	print("Flee battle")
-	is_fleeing = true
+	var rng = RandomNumberGenerator.new() 
+	
+	if player_speed == enemy_speed:
+		
+		if rng.randi_range(1, 2) == 1:
+			is_fleeing = true
+		else:
+			is_fleeing = false
+	elif player_speed > enemy_speed:
+		is_fleeing = true
+	elif player_speed < enemy_speed:
+		is_fleeing = false
+	
 	has_player_chosen = true
 
 func _decide_move(move_type: int, move_option: int) -> void:
@@ -395,7 +533,25 @@ func _decide_move(move_type: int, move_option: int) -> void:
 						print(player_defense_moves[3].move_name)
 				
 				has_player_chosen = true
-		3: # Support Type
+		3: # Shift Type
+			print("Shift move")
+			print("Move Option #" + str(move_option))
+			
+			if player_shift_moves.size() < move_option:
+				print("This option does not have a move equipped")
+			else:
+				match move_option:
+					1:
+						print(player_shift_moves[0])
+					2:
+						print(player_shift_moves[1])
+					3:
+						print(player_shift_moves[2])
+					4:
+						print(player_shift_moves[3])
+				
+				has_player_chosen = true
+		4: # Support Type
 			print("Support move")
 			print("Move Option #" + str(move_option))
 			match move_option:
@@ -437,8 +593,6 @@ func _randomly_decide_enemy_move() -> void:
 	
 	prev_enemy_move = chosen_enemy_move
 	print("Enemy chooses: " + chosen_enemy_move.move_name)
-
-
 
 #region State Machine Checks
 
@@ -484,6 +638,3 @@ func _combat_rewards_given() -> bool:
 	else: 
 		return false
 #endregion
-
-func _on_finish_entry_button_pressed() -> void:
-	entry_finished = true

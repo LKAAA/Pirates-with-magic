@@ -13,6 +13,8 @@
 script = ExtResource("3_atmgr")
 enemy_name = "Spooky Sloop"
 enemy_faction = 5
+type_1 = "Magic - Spectral"
+type_2 = "N/A"
 ship_type = ExtResource("8_nh0yy")
 attack_moves = Array[ExtResource("1_5y64h")]([ExtResource("2_b4lho"), ExtResource("3_8tp12")])
 defense_moves = Array[ExtResource("2_a7v4y")]([ExtResource("5_x84op"), ExtResource("6_mikpj")])

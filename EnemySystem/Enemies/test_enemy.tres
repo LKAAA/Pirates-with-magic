@@ -13,6 +13,8 @@
 script = ExtResource("3_enkm4")
 enemy_name = "Navy Man o' War"
 enemy_faction = 0
+type_1 = "Physical"
+type_2 = "Magic - Arcane"
 ship_type = ExtResource("8_dt8b3")
 attack_moves = Array[ExtResource("1_73rtp")]([ExtResource("2_gnwbk"), ExtResource("3_n68iv")])
 defense_moves = Array[ExtResource("2_t1msy")]([ExtResource("4_pq608"), ExtResource("6_hipai")])

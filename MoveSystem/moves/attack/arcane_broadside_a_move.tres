@@ -6,6 +6,7 @@
 script = ExtResource("1_wee4g")
 hull_damage = 400.0
 accuracy = 100
+ability_strength_percent = 0.0
 damage_type = 1
 canDisableCannons = false
 canStunCrew = false
@@ -20,7 +21,7 @@ lifeDrainAmount = 0
 canReduceEnemyAccuracy = false
 move_name = "Arcane broadside"
 move_description = "Fires enchanted cannonballs that explode with arcane energy on impact."
-move_type = 7
+move_type = "Magic - Arcane"
 effect_chance = 30
 effect_duration = 0
 max_uses = 15

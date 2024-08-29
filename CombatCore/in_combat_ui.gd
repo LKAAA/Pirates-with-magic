@@ -25,7 +25,7 @@ func _update_move_log(player_move, enemy_move, enemy_damage_dealt, player_damage
 			else:
 				move_log_label.text += "\nIt did %s damage." % [player_damage_dealt]
 	else:
-		move_log_label.text += "Player used a support move. \nThese moves are not implemented yet. Some pirate."
+		move_log_label.text += "Support moves are not implemented yet. Dumbass. \nOr you failed at fleeing. Pussy."
 	
 	if enemy_move:
 		move_log_label.text += "\n\n\n\nEnemy used: %s" % [enemy_move.move_name]
