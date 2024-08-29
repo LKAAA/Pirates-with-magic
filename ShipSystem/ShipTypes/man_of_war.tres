@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=2 format=3 uid="uid://y7s7j4maomcy"]
+
+[ext_resource type="Script" path="res://ShipSystem/ShipData.gd" id="1_xm1sl"]
+
+[resource]
+script = ExtResource("1_xm1sl")
+ship_name = "Man o' War"
+ship_description = "This brute of a ship is up to 60 meters long and holds 124 guns over 3 gun decks. "
+max_speed = 70
+voyage_speed = 8
+base_hull_health_max = 5000
+crew_member_max = 30
+special_crew_member_max = 4
+cargo_weight_max = 800

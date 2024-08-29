@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2evuh2ejf4f"]
+
+[ext_resource type="Script" path="res://EnemySystem/EnemyCore.gd" id="1_irlfi"]
+[ext_resource type="PackedScene" uid="uid://ujec6nejtxns" path="res://ShipSystem/ship_holder.tscn" id="3_ksj7w"]
+
+[node name="Enemy1" type="Node2D" groups=["enemy"]]
+script = ExtResource("1_irlfi")
+
+[node name="ShipHolder" parent="." instance=ExtResource("3_ksj7w")]
+unique_name_in_owner = true

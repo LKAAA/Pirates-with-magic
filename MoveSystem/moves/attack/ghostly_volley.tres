@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="AttackMoveData" load_steps=2 format=3 uid="uid://ctm0x5x2e8ulc"]
+
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_8hdt7"]
+
+[resource]
+script = ExtResource("1_8hdt7")
+hull_damage = 300.0
+accuracy = 80
+ability_strength_percent = 20.0
+damage_type = 1
+canDisableCannons = false
+canStunCrew = false
+ignorePhysicalDefense = false
+ignoreMagicalDefense = true
+canLowerEnemyMoral = true
+canIgnite = false
+canKillCrew = false
+canReduceEnemySpeed = false
+canLifeDrain = false
+lifeDrainAmount = 0
+canReduceEnemyAccuracy = false
+move_name = "Ghostly Volley"
+move_description = "Fires spectral cannonballs that pass through physical defenses."
+move_type = 5
+effect_chance = 0
+effect_duration = 0
+max_uses = 15
+hasACooldown = false
+cooldownLength = 0

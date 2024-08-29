@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://djoqkn041ds2g"]
+
+[ext_resource type="Script" path="res://CombatCore/combatcore.gd" id="1_5p7bh"]
+[ext_resource type="Script" path="res://CombatCore/TurnBasedCombatFSM.gd" id="2_c1tgq"]
+[ext_resource type="Script" path="res://CombatCore/in_combat_ui.gd" id="3_ha0f1"]
+[ext_resource type="FontFile" uid="uid://5xyvrcahqhvm" path="res://UI/ark-pixel-16px-proportional-ja.ttf" id="3_p6xct"]
+[ext_resource type="Script" path="res://CombatCore/player_choice_ui.gd" id="4_78eqw"]
+
+[node name="CombatCore" type="Node2D"]
+script = ExtResource("1_5p7bh")
+
+[node name="TurnBasedCombatFSM" type="Node" parent="."]
+script = ExtResource("2_c1tgq")
+
+[node name="UI Canvas Layer" type="CanvasLayer" parent="."]
+
+[node name="InCombat" type="Control" parent="UI Canvas Layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ha0f1")
+
+[node name="EnemyStatusPanel" type="PanelContainer" parent="UI Canvas Layer/InCombat"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 375.0
+offset_bottom = 195.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI Canvas Layer/InCombat/EnemyStatusPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="enemy_label" type="Label" parent="UI Canvas Layer/InCombat/EnemyStatusPanel/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_p6xct")
+theme_override_font_sizes/font_size = 24
+text = "Enemy Ship
+Hull HP: 1000/1000
+Crew: 20/20
+Special Crew: 1/1"
+
+[node name="PlayerStatusPanel" type="PanelContainer" parent="UI Canvas Layer/InCombat"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 453.0
+offset_right = 375.0
+offset_bottom = 622.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI Canvas Layer/InCombat/PlayerStatusPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="player_label" type="Label" parent="UI Canvas Layer/InCombat/PlayerStatusPanel/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_p6xct")
+theme_override_font_sizes/font_size = 24
+text = "Player Ship
+Hull HP: 1000/1000
+Crew: 20/20
+Special Crew: 1/1"
+
+[node name="PlayerChoiceUI" type="Control" parent="UI Canvas Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_78eqw")
+
+[node name="Button1" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 342.0
+offset_right = 783.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("3_p6xct")
+theme_override_font_sizes/font_size = 48
+text = "Attack"
+
+[node name="Button2" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 342.0
+offset_right = 1119.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("3_p6xct")
+theme_override_font_sizes/font_size = 48
+text = "Defense"
+
+[node name="Button3" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 495.0
+offset_right = 781.0
+offset_bottom = 623.0
+theme_override_fonts/font = ExtResource("3_p6xct")
+theme_override_font_sizes/font_size = 48
+text = "Support"
+
+[node name="Button4" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 495.0
+offset_right = 1120.0
+offset_bottom = 623.0
+theme_override_fonts/font = ExtResource("3_p6xct")
+theme_override_font_sizes/font_size = 48
+text = "Flee"
+
+[connection signal="pressed" from="UI Canvas Layer/PlayerChoiceUI/Button1" to="UI Canvas Layer/PlayerChoiceUI" method="_on_attack_button_pressed"]
+[connection signal="pressed" from="UI Canvas Layer/PlayerChoiceUI/Button2" to="UI Canvas Layer/PlayerChoiceUI" method="_on_defense_button_pressed"]
+[connection signal="pressed" from="UI Canvas Layer/PlayerChoiceUI/Button3" to="UI Canvas Layer/PlayerChoiceUI" method="_on_support_button_pressed"]
+[connection signal="pressed" from="UI Canvas Layer/PlayerChoiceUI/Button4" to="UI Canvas Layer/PlayerChoiceUI" method="_on_flee_button_pressed"]

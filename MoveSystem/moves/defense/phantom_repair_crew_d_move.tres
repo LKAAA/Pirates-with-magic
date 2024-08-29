@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DefenseMoveData" load_steps=2 format=3 uid="uid://6cle5nh0dg3j"]
+
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="1_ok0ei"]
+
+[resource]
+script = ExtResource("1_ok0ei")
+heal_strength = 0
+damage_reduction = 0
+hull_repair_amount = 250
+canRepairHull = true
+canIncreasePhysicalResistance = false
+canIncreaseMagicalResistance = false
+canIncreaseEvasion = false
+canReflectDamage = false
+returnDamagePercent = 0
+canRestoreCrewHealth = false
+canBoostCrewEffectiveness = false
+canIncreaseMovementSpeed = false
+canSummonAdditionalCrew = false
+summonedCrewAmount = 0
+canAbsorbDamage = false
+absorbDamageAmount = 0
+grantsImmunityToStatusEffects = false
+canStabalizeShip = false
+canReduceEnemyAccuracy = false
+move_name = "Phantom Repair Crew"
+move_description = "Temporarily summons ghostly sailors to assist in hull repair."
+move_type = 5
+effect_chance = 100
+effect_duration = 2
+max_uses = 10
+hasACooldown = true
+cooldownLength = 1

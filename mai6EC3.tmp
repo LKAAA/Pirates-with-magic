@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://doefmek85em7s"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_44og4"]
+[ext_resource type="PackedScene" uid="uid://djoqkn041ds2g" path="res://CombatCore/CombatCore.tscn" id="1_w6vb8"]
+[ext_resource type="PackedScene" uid="uid://crkv3v45urdvj" path="res://player.tscn" id="2_31hde"]
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="3_514w0"]
+[ext_resource type="Resource" uid="uid://cnat6v5p74ayq" path="res://MoveSystem/moves/attack/arcane_broadside_a_move.tres" id="4_paarh"]
+[ext_resource type="Resource" uid="uid://diq2472fifrt8" path="res://MoveSystem/moves/attack/cannonball_a_move.tres" id="5_hfkwv"]
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="6_j8ome"]
+[ext_resource type="Resource" uid="uid://6cle5nh0dg3j" path="res://MoveSystem/moves/defense/phantom_repair_crew_d_move.tres" id="7_fxdk1"]
+[ext_resource type="Resource" uid="uid://qgudhv4kno3p" path="res://MoveSystem/moves/defense/hull_repair_d_move.tres" id="8_yxglp"]
+[ext_resource type="Script" path="res://EnemyCore.gd" id="9_3oaq0"]
+[ext_resource type="Resource" uid="uid://cnbrkx65wed7m" path="res://EnemySystem/Enemies/test_enemy.tres" id="10_b8tfk"]
+[ext_resource type="Resource" uid="uid://cvd1scv52myvx" path="res://EnemySystem/Enemies/test_enemy_2.tres" id="11_rddjj"]
+[ext_resource type="FontFile" uid="uid://5xyvrcahqhvm" path="res://UI/ark-pixel-16px-proportional-ja.ttf" id="13_m2ets"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_44og4")
+
+[node name="CombatCore" parent="." instance=ExtResource("1_w6vb8")]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("2_31hde")]
+equipped_attack_moves = Array[ExtResource("3_514w0")]([ExtResource("4_paarh"), ExtResource("5_hfkwv"), ExtResource("4_paarh")])
+equipped_defense_moves = Array[ExtResource("6_j8ome")]([ExtResource("7_fxdk1"), ExtResource("8_yxglp"), ExtResource("7_fxdk1")])
+
+[node name="Enemy1" type="Node2D" parent="." groups=["enemy"]]
+script = ExtResource("9_3oaq0")
+enemy_data = ExtResource("10_b8tfk")
+
+[node name="Enemy2" type="Node2D" parent="." groups=["enemy"]]
+script = ExtResource("9_3oaq0")
+enemy_data = ExtResource("11_rddjj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OutOfCombatUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BeginCombatButton" type="Button" parent="CanvasLayer/OutOfCombatUI"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 416.0
+offset_right = 574.0
+offset_bottom = 544.0
+theme_override_fonts/font = ExtResource("13_m2ets")
+theme_override_font_sizes/font_size = 48
+text = "Begin Combat
+Enemy 1"
+
+[node name="BeginCombatButton2" type="Button" parent="CanvasLayer/OutOfCombatUI"]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 416.0
+offset_right = 916.0
+offset_bottom = 544.0
+theme_override_fonts/font = ExtResource("13_m2ets")
+theme_override_font_sizes/font_size = 48
+text = "Begin Combat
+Enemy 2"
+
+[connection signal="pressed" from="CanvasLayer/OutOfCombatUI/BeginCombatButton" to="." method="_on_begin_combat_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OutOfCombatUI/BeginCombatButton2" to="." method="_on_begin_combat_button_2_pressed"]

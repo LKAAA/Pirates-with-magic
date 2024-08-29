@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://cnbrkx65wed7m"]
+
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_73rtp"]
+[ext_resource type="Resource" uid="uid://diq2472fifrt8" path="res://MoveSystem/moves/attack/cannonball_a_move.tres" id="2_gnwbk"]
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="2_t1msy"]
+[ext_resource type="Script" path="res://EnemySystem/EnemyData.gd" id="3_enkm4"]
+[ext_resource type="Resource" uid="uid://cnat6v5p74ayq" path="res://MoveSystem/moves/attack/arcane_broadside_a_move.tres" id="3_n68iv"]
+[ext_resource type="Resource" uid="uid://qgudhv4kno3p" path="res://MoveSystem/moves/defense/hull_repair_d_move.tres" id="4_pq608"]
+[ext_resource type="Resource" uid="uid://q2nnx1k3ch15" path="res://MoveSystem/moves/defense/warding_aura.tres" id="6_hipai"]
+[ext_resource type="Resource" uid="uid://y7s7j4maomcy" path="res://ShipSystem/ShipTypes/man_of_war.tres" id="8_dt8b3"]
+
+[resource]
+script = ExtResource("3_enkm4")
+enemy_name = "Navy Man o' War"
+enemy_faction = 0
+ship_type = ExtResource("8_dt8b3")
+attack_moves = Array[ExtResource("1_73rtp")]([ExtResource("2_gnwbk"), ExtResource("3_n68iv")])
+defense_moves = Array[ExtResource("2_t1msy")]([ExtResource("4_pq608"), ExtResource("6_hipai")])

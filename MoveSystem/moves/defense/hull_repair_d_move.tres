@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DefenseMoveData" load_steps=2 format=3 uid="uid://qgudhv4kno3p"]
+
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="1_bt5fl"]
+
+[resource]
+script = ExtResource("1_bt5fl")
+heal_strength = 0
+damage_reduction = 0
+hull_repair_amount = 100
+canRepairHull = true
+canIncreasePhysicalResistance = false
+canIncreaseMagicalResistance = false
+canIncreaseEvasion = false
+canReflectDamage = false
+returnDamagePercent = 0
+canRestoreCrewHealth = false
+canBoostCrewEffectiveness = false
+canIncreaseMovementSpeed = false
+canSummonAdditionalCrew = false
+summonedCrewAmount = 0
+canAbsorbDamage = false
+absorbDamageAmount = 0
+grantsImmunityToStatusEffects = false
+canStabalizeShip = false
+canReduceEnemyAccuracy = false
+move_name = "Hull Repair"
+move_description = "Repairs holes in the hull with spare planks. Gotta prevent those leaks somehow."
+move_type = 0
+effect_chance = 0
+effect_duration = 0
+max_uses = 30
+hasACooldown = false
+cooldownLength = 0

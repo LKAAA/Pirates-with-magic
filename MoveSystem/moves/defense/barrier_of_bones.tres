@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DefenseMoveData" load_steps=2 format=3 uid="uid://blwf5c400myol"]
+
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="1_dyi1g"]
+
+[resource]
+script = ExtResource("1_dyi1g")
+heal_strength = 0
+damage_reduction = 0
+hull_repair_amount = 0
+canRepairHull = false
+canIncreasePhysicalResistance = false
+canIncreaseMagicalResistance = false
+canIncreaseEvasion = false
+canReflectDamage = true
+returnDamagePercent = 50
+canRestoreCrewHealth = false
+canBoostCrewEffectiveness = false
+canIncreaseMovementSpeed = false
+canSummonAdditionalCrew = false
+summonedCrewAmount = 0
+canAbsorbDamage = true
+absorbDamageAmount = 300
+grantsImmunityToStatusEffects = false
+canStabalizeShip = false
+canReduceEnemyAccuracy = false
+move_name = "Barrier of Bones"
+move_description = "Raises a protective shield made of spectral bones around the ship."
+move_type = 5
+effect_chance = 0
+effect_duration = 1
+max_uses = 30
+hasACooldown = false
+cooldownLength = 0

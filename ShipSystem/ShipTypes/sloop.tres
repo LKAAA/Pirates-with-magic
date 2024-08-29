@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=2 format=3 uid="uid://ct0vypfhg5bm5"]
+
+[ext_resource type="Script" path="res://ShipSystem/ShipData.gd" id="1_omrun"]
+
+[resource]
+script = ExtResource("1_omrun")
+ship_name = "Sloop"
+ship_description = "A fast but small ship that can run circles around bigger ships. Be careful not to get caught though."
+max_speed = 20
+voyage_speed = 4
+base_hull_health_max = 700
+crew_member_max = 6
+special_crew_member_max = 1
+cargo_weight_max = 50

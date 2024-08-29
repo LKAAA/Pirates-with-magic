@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://cvd1scv52myvx"]
+
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_5y64h"]
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="2_a7v4y"]
+[ext_resource type="Resource" uid="uid://ctm0x5x2e8ulc" path="res://MoveSystem/moves/attack/ghostly_volley.tres" id="2_b4lho"]
+[ext_resource type="Resource" uid="uid://cr4yf5q86jpjv" path="res://MoveSystem/moves/attack/hexed_harpoon.tres" id="3_8tp12"]
+[ext_resource type="Script" path="res://EnemySystem/EnemyData.gd" id="3_atmgr"]
+[ext_resource type="Resource" uid="uid://6cle5nh0dg3j" path="res://MoveSystem/moves/defense/phantom_repair_crew_d_move.tres" id="5_x84op"]
+[ext_resource type="Resource" uid="uid://blwf5c400myol" path="res://MoveSystem/moves/defense/barrier_of_bones.tres" id="6_mikpj"]
+[ext_resource type="Resource" uid="uid://ct0vypfhg5bm5" path="res://ShipSystem/ShipTypes/sloop.tres" id="8_nh0yy"]
+
+[resource]
+script = ExtResource("3_atmgr")
+enemy_name = "Spooky Sloop"
+enemy_faction = 5
+ship_type = ExtResource("8_nh0yy")
+attack_moves = Array[ExtResource("1_5y64h")]([ExtResource("2_b4lho"), ExtResource("3_8tp12")])
+defense_moves = Array[ExtResource("2_a7v4y")]([ExtResource("5_x84op"), ExtResource("6_mikpj")])

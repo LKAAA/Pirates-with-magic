@@ -1,0 +1,24 @@
+[gd_scene load_steps=14 format=3 uid="uid://crkv3v45urdvj"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_o3y0f"]
+[ext_resource type="PackedScene" uid="uid://ujec6nejtxns" path="res://ShipSystem/ship_holder.tscn" id="2_cjevp"]
+[ext_resource type="Resource" uid="uid://y7s7j4maomcy" path="res://ShipSystem/ShipTypes/man_of_war.tres" id="3_sorjm"]
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="4_jtsl4"]
+[ext_resource type="Resource" uid="uid://cnat6v5p74ayq" path="res://MoveSystem/moves/attack/arcane_broadside_a_move.tres" id="5_wpmm1"]
+[ext_resource type="Resource" uid="uid://diq2472fifrt8" path="res://MoveSystem/moves/attack/cannonball_a_move.tres" id="6_71n6d"]
+[ext_resource type="Resource" uid="uid://ctm0x5x2e8ulc" path="res://MoveSystem/moves/attack/ghostly_volley.tres" id="7_jhlqa"]
+[ext_resource type="Resource" uid="uid://cr4yf5q86jpjv" path="res://MoveSystem/moves/attack/hexed_harpoon.tres" id="8_k1hdp"]
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="9_fwpji"]
+[ext_resource type="Resource" uid="uid://blwf5c400myol" path="res://MoveSystem/moves/defense/barrier_of_bones.tres" id="10_dylry"]
+[ext_resource type="Resource" uid="uid://qgudhv4kno3p" path="res://MoveSystem/moves/defense/hull_repair_d_move.tres" id="11_wexwl"]
+[ext_resource type="Resource" uid="uid://6cle5nh0dg3j" path="res://MoveSystem/moves/defense/phantom_repair_crew_d_move.tres" id="12_msacs"]
+[ext_resource type="Resource" uid="uid://q2nnx1k3ch15" path="res://MoveSystem/moves/defense/warding_aura.tres" id="13_b8ylf"]
+
+[node name="Player" type="Node2D" groups=["player"]]
+script = ExtResource("1_o3y0f")
+
+[node name="ShipHolder" parent="." instance=ExtResource("2_cjevp")]
+unique_name_in_owner = true
+ship_type = ExtResource("3_sorjm")
+equipped_attack_moves = Array[ExtResource("4_jtsl4")]([ExtResource("5_wpmm1"), ExtResource("6_71n6d"), ExtResource("7_jhlqa"), ExtResource("8_k1hdp")])
+equipped_defense_moves = Array[ExtResource("9_fwpji")]([ExtResource("10_dylry"), ExtResource("11_wexwl"), ExtResource("12_msacs"), ExtResource("13_b8ylf")])

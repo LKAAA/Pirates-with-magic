@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="AttackMoveData" load_steps=2 format=3 uid="uid://cnat6v5p74ayq"]
+
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_wee4g"]
+
+[resource]
+script = ExtResource("1_wee4g")
+hull_damage = 400.0
+accuracy = 100
+damage_type = 1
+canDisableCannons = false
+canStunCrew = false
+ignorePhysicalDefense = false
+ignoreMagicalDefense = false
+canLowerEnemyMoral = false
+canIgnite = false
+canKillCrew = true
+canReduceEnemySpeed = false
+canLifeDrain = false
+lifeDrainAmount = 0
+canReduceEnemyAccuracy = false
+move_name = "Arcane broadside"
+move_description = "Fires enchanted cannonballs that explode with arcane energy on impact."
+move_type = 7
+effect_chance = 30
+effect_duration = 0
+max_uses = 15
+hasACooldown = false
+cooldownLength = 0

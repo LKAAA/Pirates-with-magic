@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=2 format=3 uid="uid://cg7ropyklnhnm"]
+
+[ext_resource type="Script" path="res://ShipSystem/ShipData.gd" id="1_rmfs7"]
+
+[resource]
+script = ExtResource("1_rmfs7")
+ship_name = "Dingy"
+ship_description = "A small wooden dingy. Its leaking a little bit."
+max_speed = 10
+voyage_speed = 1
+base_hull_health_max = 300
+crew_member_max = 2
+special_crew_member_max = 0
+cargo_weight_max = 10
