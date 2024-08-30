@@ -1,10 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://crkv3v45urdvj"]
+[gd_scene load_steps=19 format=3 uid="uid://crkv3v45urdvj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_o3y0f"]
 [ext_resource type="PackedScene" uid="uid://ujec6nejtxns" path="res://ShipSystem/ship_holder.tscn" id="2_cjevp"]
+[ext_resource type="Script" path="res://MoveSystem/shift_move_data.gd" id="2_wixib"]
+[ext_resource type="Resource" uid="uid://drmyxulyvdhkl" path="res://MoveSystem/moves/shift/arcane_s_move.tres" id="3_p5ggi"]
 [ext_resource type="Resource" uid="uid://y7s7j4maomcy" path="res://ShipSystem/ShipTypes/man_of_war.tres" id="3_sorjm"]
 [ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="4_jtsl4"]
+[ext_resource type="Resource" uid="uid://0ekjmntdvwyd" path="res://MoveSystem/moves/shift/physical_arcane_s_move.tres" id="4_kls67"]
+[ext_resource type="Resource" uid="uid://c12xwa5swfmqh" path="res://MoveSystem/moves/shift/physical_s_move.tres" id="5_qe7dj"]
 [ext_resource type="Resource" uid="uid://cnat6v5p74ayq" path="res://MoveSystem/moves/attack/arcane_broadside_a_move.tres" id="5_wpmm1"]
+[ext_resource type="Resource" uid="uid://cc6nadj53g2nf" path="res://MoveSystem/moves/shift/spectral_s_move.tres" id="6_06mu7"]
 [ext_resource type="Resource" uid="uid://diq2472fifrt8" path="res://MoveSystem/moves/attack/cannonball_a_move.tres" id="6_71n6d"]
 [ext_resource type="Resource" uid="uid://ctm0x5x2e8ulc" path="res://MoveSystem/moves/attack/ghostly_volley.tres" id="7_jhlqa"]
 [ext_resource type="Resource" uid="uid://cr4yf5q86jpjv" path="res://MoveSystem/moves/attack/hexed_harpoon.tres" id="8_k1hdp"]
@@ -18,6 +23,7 @@
 script = ExtResource("1_o3y0f")
 type_1 = "Physical"
 type_2 = "N/A"
+equipped_shift_moves = Array[ExtResource("2_wixib")]([ExtResource("3_p5ggi"), ExtResource("4_kls67"), ExtResource("5_qe7dj"), ExtResource("6_06mu7")])
 
 [node name="ShipHolder" parent="." instance=ExtResource("2_cjevp")]
 unique_name_in_owner = true

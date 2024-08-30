@@ -25,56 +25,60 @@ script = ExtResource("3_ha0f1")
 
 [node name="EnemyStatusPanel" type="PanelContainer" parent="UI Canvas Layer/InCombat"]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 26.0
-offset_right = 375.0
-offset_bottom = 195.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 175.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI Canvas Layer/InCombat/EnemyStatusPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 4
 
 [node name="enemy_label" type="Label" parent="UI Canvas Layer/InCombat/EnemyStatusPanel/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "Enemy Ship
 Hull HP: 1000/1000
 Crew: 20/20
-Special Crew: 1/1"
+Special Crew: 1/1
+Types:
+	Yada Yada"
 
 [node name="PlayerStatusPanel" type="PanelContainer" parent="UI Canvas Layer/InCombat"]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 453.0
-offset_right = 375.0
-offset_bottom = 622.0
+offset_left = 8.0
+offset_top = 184.0
+offset_right = 216.0
+offset_bottom = 351.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI Canvas Layer/InCombat/PlayerStatusPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 4
 
 [node name="player_label" type="Label" parent="UI Canvas Layer/InCombat/PlayerStatusPanel/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "Player Ship
 Hull HP: 1000/1000
 Crew: 20/20
-Special Crew: 1/1"
+Special Crew: 1/1
+Types:
+	Yada Yada"
 
 [node name="PlayerStatusPanel2" type="PanelContainer" parent="UI Canvas Layer/InCombat"]
 layout_mode = 0
-offset_left = 468.0
-offset_top = 23.0
-offset_right = 1122.0
-offset_bottom = 313.0
+offset_left = 278.0
+offset_top = 8.0
+offset_right = 624.0
+offset_bottom = 158.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI Canvas Layer/InCombat/PlayerStatusPanel2"]
 layout_mode = 2
@@ -87,54 +91,60 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 
 [node name="PlayerChoiceUI" type="Control" parent="UI Canvas Layer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_78eqw")
 
 [node name="Button1" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 342.0
-offset_right = 783.0
-offset_bottom = 470.0
+offset_left = 330.0
+offset_top = 175.0
+offset_right = 465.0
+offset_bottom = 251.0
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Attack"
+autowrap_mode = 3
 
 [node name="Button2" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 342.0
-offset_right = 1119.0
-offset_bottom = 470.0
+offset_left = 480.0
+offset_top = 175.0
+offset_right = 615.0
+offset_bottom = 251.0
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Defense"
+autowrap_mode = 3
 
 [node name="Button3" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
 layout_mode = 0
-offset_left = 467.0
-offset_top = 495.0
-offset_right = 781.0
-offset_bottom = 623.0
+offset_left = 330.0
+offset_top = 265.0
+offset_right = 465.0
+offset_bottom = 341.0
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Shift"
+autowrap_mode = 3
 
 [node name="Button4" type="Button" parent="UI Canvas Layer/PlayerChoiceUI"]
 layout_mode = 0
-offset_left = 806.0
-offset_top = 495.0
-offset_right = 1120.0
-offset_bottom = 623.0
+offset_left = 480.0
+offset_top = 265.0
+offset_right = 615.0
+offset_bottom = 341.0
 theme_override_fonts/font = ExtResource("3_p6xct")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Support"
+autowrap_mode = 3
 
 [connection signal="pressed" from="UI Canvas Layer/PlayerChoiceUI/Button1" to="UI Canvas Layer/PlayerChoiceUI" method="_on_attack_button_pressed"]
 [connection signal="pressed" from="UI Canvas Layer/PlayerChoiceUI/Button2" to="UI Canvas Layer/PlayerChoiceUI" method="_on_defense_button_pressed"]

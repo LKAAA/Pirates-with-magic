@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShiftMoveData" load_steps=2 format=3 uid="uid://drmyxulyvdhkl"]
+
+[ext_resource type="Script" path="res://MoveSystem/shift_move_data.gd" id="1_y5ijs"]
+
+[resource]
+script = ExtResource("1_y5ijs")
+type_to_change_1 = "Magic - Arcane"
+type_to_change_2 = "N/A"
+move_name = "Arcane Shift"
+move_description = "Shift your ship's type to Arcane."
+move_type = "Shift"
+effect_chance = 0
+effect_duration = 0
+max_uses = 30
+hasACooldown = false
+cooldownLength = 0

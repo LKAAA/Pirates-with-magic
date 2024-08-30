@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7clsix3eo258"]
+
+[ext_resource type="Script" path="res://PortSystem/port_player.gd" id="1_mxcce"]
+[ext_resource type="Texture2D" uid="uid://c1mphdwnmmvq3" path="res://Temp Art/s4m_ur4i_huge-assetpack-character-animations.png" id="2_4jqr1"]
+[ext_resource type="Script" path="res://PortSystem/camera_2d.gd" id="3_3f8cv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5o1xb"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfyai"]
+atlas = ExtResource("2_4jqr1")
+region = Rect2(0, 4, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n843"]
+atlas = ExtResource("2_4jqr1")
+region = Rect2(20, 4, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5jte"]
+atlas = ExtResource("2_4jqr1")
+region = Rect2(40, 4, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqm00"]
+atlas = ExtResource("2_4jqr1")
+region = Rect2(0, 27, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d18ti"]
+atlas = ExtResource("2_4jqr1")
+region = Rect2(40, 27, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx0kl"]
+atlas = ExtResource("2_4jqr1")
+region = Rect2(20, 27, 20, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rmk2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfyai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n843")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5jte")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqm00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d18ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx0kl")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="PortPlayer" type="CharacterBody2D"]
+z_index = 4
+script = ExtResource("1_mxcce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5o1xb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8rmk2")
+animation = &"Walk"
+autoplay = "Idle"
+frame_progress = 0.86733
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -50)
+process_callback = 0
+position_smoothing_speed = 15.0
+script = ExtResource("3_3f8cv")

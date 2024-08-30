@@ -14,7 +14,7 @@ var is_fleeing: bool = false
 
 var player_attack_moves: Array[AttackMoveData]
 var player_defense_moves: Array[DefenseMoveData]
-var player_shift_moves: Array[String]
+var player_shift_moves: Array[ShiftMoveData]
 var player_max_hull_hp: int = 0
 var player_cur_hull_hp: int = 0
 var player_cur_crew_members: int = 0
@@ -170,6 +170,9 @@ func _load_player() -> void:
 	for i in player.ship_holder.equipped_defense_moves.size():
 		player_defense_moves.append(player.ship_holder.equipped_defense_moves[i])
 	
+	for i in player.equipped_shift_moves.size():
+		player_shift_moves.append(player.equipped_shift_moves[i])
+	
 	player_max_hull_hp = player.ship_holder.ship_type.base_hull_health_max
 	player_cur_hull_hp = player.ship_holder.cur_hull_health
 	player_max_crew_members = player.ship_holder.ship_type.crew_member_max
@@ -299,7 +302,7 @@ func execute_player_move() -> void:
 			if dmove.canIncreaseMagicalResistance: 
 				player.ship_holder._increase_magical_resistance(dmove.damage_reduction, dmove.effect_duration)
 				print("Increase Magic Res")
-		else:
+		elif chosen_player_move is AttackMoveData:
 			var amove: AttackMoveData = chosen_player_move
 			var hit: bool = _determine_if_move_hits(amove, current_enemy)
 			if hit:
@@ -307,8 +310,16 @@ func execute_player_move() -> void:
 					var hull_damage_calculated = _calculate_hull_damage(amove, player, current_enemy)
 					enemy_cur_hull_hp -= hull_damage_calculated
 					player_damage_dealt = hull_damage_calculated
+				if amove.canLowerEnemyMoral:
+					if _determine_if_effect_hits(amove.effect_chance):
+						current_enemy.ship_holder._lower_enemy_morale(amove.ability_strength_percent, amove.effect_duration)
+						print("OMG MORALE REDUCTION YIPPIE")
 			else:
 				player_damage_dealt = 0
+		elif chosen_player_move is ShiftMoveData:
+			var smove: ShiftMoveData = chosen_player_move
+			player.type_1 = smove.type_to_change_1
+			player.type_2 = smove.type_to_change_2
 	else:
 		print("Chose support move")
 
@@ -356,6 +367,17 @@ func _determine_if_move_hits(move: AttackMoveData, defender) -> bool:
 	else:
 		hit = true
 	
+	return hit
+
+func _determine_if_effect_hits(effect_chance: int) -> bool:
+	var hit: bool = false
+	var rng = RandomNumberGenerator.new()
+	var random = randi_range(1,100)
+	
+	if random >= effect_chance:
+		hit = false
+	else:
+		hit = true
 	return hit
 
 func _calculate_hull_damage(chosen_move: AttackMoveData, attacker, defender) -> int:
@@ -542,12 +564,16 @@ func _decide_move(move_type: int, move_option: int) -> void:
 			else:
 				match move_option:
 					1:
+						chosen_player_move = player_shift_moves[0]
 						print(player_shift_moves[0])
 					2:
+						chosen_player_move = player_shift_moves[1]
 						print(player_shift_moves[1])
 					3:
+						chosen_player_move = player_shift_moves[2]
 						print(player_shift_moves[2])
 					4:
+						chosen_player_move = player_shift_moves[3]
 						print(player_shift_moves[3])
 				
 				has_player_chosen = true

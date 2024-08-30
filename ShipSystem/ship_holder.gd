@@ -18,6 +18,7 @@ var magical_defense_stat: float
 
 var physical_defense_base: float
 var magical_defense_base: float
+var crew_morale_base: float
 
 var crew_morale_stat: int # Value from 1 -> 100. 50 being average morale
 
@@ -38,6 +39,10 @@ func apply_buff(buff_name: String, effect: float, turns: int) -> void:
 				magical_defense_stat += effect
 				print("Adding Magic Defense Buff")
 				print("New magic defense: " + str(magical_defense_stat))
+			"Lowered Morale":
+				crew_morale_stat -= effect
+				print("Adding Lowered Morale Debuff")
+				print("New Morale: " + str(crew_morale_stat))
 	else: # If buff is already active, just refresh its duration
 		active_buffs[buff_name]["turns"] = turns
 
@@ -62,10 +67,14 @@ func progress_turn() -> void:
 				magical_defense_stat -= active_buffs[buff_name]["effect"]
 				active_buffs.erase(buff_name)
 				print("Removing Magic Defense Buff")
+			"Lowered Morale":
+				crew_morale_stat += active_buffs[buff_name]["effect"]
+				active_buffs.erase(buff_name)
 
 	# Ensure the buff doesn't fall below the base value
 	physical_defense_stat = max(physical_defense_stat, physical_defense_base)
 	magical_defense_stat = max(magical_defense_stat, magical_defense_base)
+	crew_morale_stat = max(crew_morale_stat, crew_morale_base)
 
 func _increase_physical_resistance(percent, turns) -> void:
 	var buff_effect: float = physical_defense_base * (percent * 0.01)
@@ -77,11 +86,17 @@ func _increase_magical_resistance(percent, turns) -> void:
 	
 	apply_buff("Magic Defense Increase", roundi(buff_effect), turns)
 
+func _lower_enemy_morale(percent, turns) -> void:
+	var buff_effect: float = crew_morale_base * (percent * 0.01)
+	
+	apply_buff("Lowered Morale", roundi(buff_effect), turns)
+
 func _combat_starting() -> void:
 	_calculate_all_stats()
 	
 	physical_defense_base = physical_defense_stat
 	magical_defense_base = magical_defense_stat
+	crew_morale_base = crew_morale_stat
 
 func _calculate_physical_stats() -> void:
 	physical_attack_stat = roundi(cur_crew_members * 2 * (crew_morale_stat / 2) / 10)

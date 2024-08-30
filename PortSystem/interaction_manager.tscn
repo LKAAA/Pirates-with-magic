@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba16ymv8idawa"]
+
+[ext_resource type="Script" path="res://PortSystem/interaction_manager.gd" id="1_lepmx"]
+
+[node name="InteractionManager" type="Area2D"]
+script = ExtResource("1_lepmx")

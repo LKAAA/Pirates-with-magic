@@ -6,6 +6,7 @@ class_name Player
 @export_enum("N/A","Physical", "Magic - Ocean", "Magic - Storm", "Magic - Fire", "Magic - Resonance", "Magic - Spectral", "Magic - Ancient", "Magic - Arcane") var type_1: String
 @export_enum("N/A","Physical", "Magic - Ocean", "Magic - Storm", "Magic - Fire", "Magic - Resonance", "Magic - Spectral", "Magic - Ancient", "Magic - Arcane") var type_2: String
 
+@export var equipped_shift_moves: Array[ShiftMoveData]
 
 func _ready() -> void:
 	ship_holder._test_stats()
