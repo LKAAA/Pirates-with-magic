@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0paeod8fh1ef"]
+
+[ext_resource type="Script" path="res://VoyageSystem/voyage_scene.gd" id="1_n8nr2"]
+[ext_resource type="PackedScene" uid="uid://d2evuh2ejf4f" path="res://EnemySystem/enemy.tscn" id="3_jdolg"]
+[ext_resource type="PackedScene" uid="uid://dt26ynqijynb4" path="res://VoyageSystem/voyage_player.tscn" id="4_2klwd"]
+[ext_resource type="Resource" uid="uid://8oqid1x6xmd" path="res://EnemySystem/Enemies/training_dummy.tres" id="4_io7mp"]
+[ext_resource type="FontFile" uid="uid://5xyvrcahqhvm" path="res://UI/ark-pixel-16px-proportional-ja.ttf" id="5_0e6cx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qgx1m"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gwlu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlgsf"]
+size = Vector2(44, 45)
+
+[node name="VoyageScene" type="Node2D"]
+script = ExtResource("1_n8nr2")
+
+[node name="Map" type="Sprite2D" parent="."]
+modulate = Color(0.72, 0.63888, 0.5328, 1)
+position = Vector2(75, 22)
+scale = Vector2(808, 470)
+texture = SubResource("CanvasTexture_qgx1m")
+
+[node name="X-Spot2" type="Area2D" parent="."]
+position = Vector2(163, 360)
+
+[node name="Map4" type="Sprite2D" parent="X-Spot2"]
+modulate = Color(0.72, 0, 0, 1)
+position = Vector2(16, -22)
+rotation = 0.785398
+scale = Vector2(8, 58)
+texture = SubResource("CanvasTexture_gwlu8")
+
+[node name="Map5" type="Sprite2D" parent="X-Spot2"]
+modulate = Color(0.72, 0, 0, 1)
+position = Vector2(-23, -17)
+rotation = -0.785398
+scale = Vector2(8, 58)
+texture = SubResource("CanvasTexture_gwlu8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="X-Spot2"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_hlgsf")
+
+[node name="X-Spot1" type="Area2D" parent="."]
+position = Vector2(785, 93)
+
+[node name="Map4" type="Sprite2D" parent="X-Spot1"]
+modulate = Color(0.72, 0, 0, 1)
+position = Vector2(16, -22)
+rotation = 0.785398
+scale = Vector2(8, 58)
+texture = SubResource("CanvasTexture_gwlu8")
+
+[node name="Map5" type="Sprite2D" parent="X-Spot1"]
+modulate = Color(0.72, 0, 0, 1)
+position = Vector2(-23, -17)
+rotation = -0.785398
+scale = Vector2(8, 58)
+texture = SubResource("CanvasTexture_gwlu8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="X-Spot1"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_hlgsf")
+
+[node name="TrainingDummy" parent="." instance=ExtResource("3_jdolg")]
+enemy_data = ExtResource("4_io7mp")
+
+[node name="VoyagePlayer" parent="." instance=ExtResource("4_2klwd")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 729.0
+offset_top = 118.0
+offset_right = 843.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("5_0e6cx")
+theme_override_font_sizes/font_size = 16
+text = "Training Dummy"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 387.0
+offset_right = 184.0
+offset_bottom = 411.0
+theme_override_fonts/font = ExtResource("5_0e6cx")
+theme_override_font_sizes/font_size = 16
+text = "Port"
+
+[connection signal="body_entered" from="X-Spot2" to="." method="_on_x_spot_2_body_entered"]
+[connection signal="body_exited" from="X-Spot2" to="." method="_on_x_spot_2_body_exited"]
+[connection signal="body_entered" from="X-Spot1" to="." method="_on_x_spot_1_body_entered"]
+[connection signal="body_exited" from="X-Spot1" to="." method="_on_x_spot_1_body_exited"]

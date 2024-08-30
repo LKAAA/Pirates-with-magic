@@ -1,9 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq23ctkwmtnx6"]
 
-[ext_resource type="PackedScene" uid="uid://batkg1f6i3d87" path="res://PortSystem/port_scene.tscn" id="1_cy0jd"]
-[ext_resource type="PackedScene" uid="uid://doefmek85em7s" path="res://BattleScene.tscn" id="2_yn5jy"]
+[ext_resource type="Script" path="res://game.gd" id="1_1fkvq"]
+[ext_resource type="Script" path="res://game_state_machine.gd" id="1_8a3tg"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_1fkvq")
+
+[node name="GameStateMachine" type="Node" parent="."]
+script = ExtResource("1_8a3tg")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_right = 40.0
@@ -11,11 +15,8 @@ offset_bottom = 40.0
 scale = Vector2(2, 2)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 size = Vector2i(320, 180)
 render_target_update_mode = 4
-
-[node name="PortScene" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_cy0jd")]
-
-[node name="BattleScene" parent="." instance=ExtResource("2_yn5jy")]

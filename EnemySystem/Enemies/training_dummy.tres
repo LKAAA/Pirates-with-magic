@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://8oqid1x6xmd"]
+
+[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_mko3v"]
+[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="2_ntlfl"]
+[ext_resource type="Script" path="res://EnemySystem/EnemyData.gd" id="3_mdino"]
+[ext_resource type="Resource" uid="uid://dclfm25ovxvcp" path="res://ShipSystem/ShipTypes/training_dummy.tres" id="4_h5r6k"]
+
+[resource]
+script = ExtResource("3_mdino")
+enemy_name = "Training Dummy"
+enemy_faction = 0
+type_1 = "Physical"
+type_2 = "N/A"
+ship_type = ExtResource("4_h5r6k")
+attack_moves = Array[ExtResource("1_mko3v")]([])
+defense_moves = Array[ExtResource("2_ntlfl")]([])

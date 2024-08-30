@@ -43,7 +43,7 @@ func _enter_state(new_state, old_state):
 		states.OutOfCombat:
 			#print(states)
 			if old_state == states.EndCombat:
-				parent.battle_ended.emit()
+				parent.battle_ended.emit(parent.battle_end_state)
 			parent._reset_combat_system()
 			print("Out of Combat State")
 		states.CombatEntry:

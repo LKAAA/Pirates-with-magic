@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt26ynqijynb4"]
+
+[ext_resource type="Script" path="res://VoyageSystem/voyage_player.gd" id="1_s5obt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqhcb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ouuos"]
+
+[node name="VoyagePlayer" type="CharacterBody2D" groups=["voyage_player"]]
+position = Vector2(432, 262)
+script = ExtResource("1_s5obt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oqhcb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -5)
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_ouuos")

@@ -11,6 +11,7 @@ var finished_processing: bool = false
 var combat_rewards_given: bool = false
 var is_combat_over: bool = false
 var is_fleeing: bool = false
+var battle_end_state: int
 
 var player_attack_moves: Array[AttackMoveData]
 var player_defense_moves: Array[DefenseMoveData]
@@ -141,10 +142,13 @@ func _reset_combat_system():
 	player_defense_moves.clear()
 
 func _initiate_combat(enemy) -> void:
+	print("Step one")
+	_reset_combat_system()
 	current_enemy = enemy
 	enter_combat = true
 
 func _enter_combat():
+	print("Step two")
 	_toggle_passive_combat_ui()
 	# LOADING STUFF / INTRO ANIMATIONS
 	
@@ -164,6 +168,12 @@ func _toggle_passive_combat_ui():
 
 func _load_player() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	
+	if player == null:
+		printerr("Failed to find the player")
+	
+	print(player)
+	
 	for i in player.ship_holder.equipped_attack_moves.size():
 		player_attack_moves.append(player.ship_holder.equipped_attack_moves[i])
 	
@@ -184,6 +194,9 @@ func _load_player() -> void:
 	player.ship_holder._combat_starting()
 
 func _load_enemy() -> void:
+	if current_enemy == null:
+		printerr("Failed to find the enemy")
+	
 	enemy_cur_hull_hp = current_enemy.ship_holder.cur_hull_health
 	enemy_max_hull_hp = current_enemy.ship_holder.ship_type.base_hull_health_max
 	enemy_speed = current_enemy.ship_holder.evasiveness_stat
@@ -191,6 +204,7 @@ func _load_enemy() -> void:
 	current_enemy.ship_holder._combat_starting()
 
 func _toggle_player_choice():
+	print("Step Three")
 	in_combat.visible = true
 	player_choice_ui.visible = true
 
@@ -210,6 +224,7 @@ func _process_combat():
 	var enemy_died = false
 	
 	if is_fleeing:
+		battle_end_state = 2
 		is_combat_over = true
 		finished_processing = true
 		return
@@ -257,8 +272,10 @@ func _process_combat():
 	print("PLAYER DEAD = " + str(player_died))
 	
 	if player_died:
+		battle_end_state = 1
 		is_combat_over = true
 	elif enemy_died:
+		battle_end_state = 0
 		is_combat_over = true
 	else:
 		has_player_chosen = false
@@ -340,7 +357,7 @@ func execute_enemy_move() -> void:
 		if dmove.canIncreaseMagicalResistance: 
 			current_enemy.ship_holder._increase_magical_resistance(dmove.damage_reduction, dmove.effect_duration)
 			print("Increase Magic Res")
-	else:
+	elif chosen_enemy_move is AttackMoveData:
 		var amove: AttackMoveData = chosen_enemy_move
 		var hit: bool = _determine_if_move_hits(amove, player)
 		if hit:
@@ -350,6 +367,8 @@ func execute_enemy_move() -> void:
 				enemy_damage_dealt = hull_damage_calculated
 		else:
 			enemy_damage_dealt = 0
+	else:
+		print("Chose no move")
 
 func _determine_if_move_hits(move: AttackMoveData, defender) -> bool:
 	var hit: bool
@@ -596,6 +615,9 @@ func _randomly_decide_enemy_move() -> void:
 	var rng = RandomNumberGenerator.new()
 	var attackordefense = rng.randi_range(1, 2)
 	var moveNumber
+	
+	if enemy.attack_moves.size() == 0 and enemy.defense_moves.size() == 0:
+		return
 	
 	if attackordefense == 1: # Attack move
 		if enemy.attack_moves.size() > 0:

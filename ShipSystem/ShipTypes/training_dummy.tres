@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=2 format=3 uid="uid://dclfm25ovxvcp"]
+
+[ext_resource type="Script" path="res://ShipSystem/ShipData.gd" id="1_qpq74"]
+
+[resource]
+script = ExtResource("1_qpq74")
+ship_name = "Training Dummy"
+ship_description = "It's a training dummy used for practice."
+max_speed = 1
+voyage_speed = 0
+base_hull_health_max = 9999
+crew_member_max = 1
+special_crew_member_max = 1
+cargo_weight_max = 1
