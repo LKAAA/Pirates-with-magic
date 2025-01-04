@@ -28,6 +28,7 @@ player=""
 enemy=""
 voyage_interaction=""
 voyage_player=""
+shipyard_interaction=""
 
 [input]
 

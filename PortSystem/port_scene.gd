@@ -1,0 +1,15 @@
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	get_tree().get_first_node_in_group("shipyard_interaction").shipyard_interaction.connect(open_shipyard)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func open_shipyard() -> void:
+	pass

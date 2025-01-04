@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://batkg1f6i3d87"]
+[gd_scene load_steps=16 format=4 uid="uid://batkg1f6i3d87"]
 
+[ext_resource type="Script" path="res://PortSystem/port_scene.gd" id="1_16oak"]
 [ext_resource type="Texture2D" uid="uid://dhq60dw42fpao" path="res://Temp Art/s4m_ur4i_huge-assetpack-tilemap.png" id="2_5m6lb"]
 [ext_resource type="PackedScene" uid="uid://c7clsix3eo258" path="res://PortSystem/port_player.tscn" id="2_abfb1"]
 [ext_resource type="Texture2D" uid="uid://bxcrc8t3q5lmv" path="res://Temp Art/s4m_ur4i_huge-assetpack-update-1-2-clouds.png" id="2_nny0v"]
 [ext_resource type="PackedScene" uid="uid://ba16ymv8idawa" path="res://PortSystem/interaction_manager.tscn" id="4_b36xf"]
+[ext_resource type="FontFile" uid="uid://5xyvrcahqhvm" path="res://UI/ark-pixel-16px-proportional-ja.ttf" id="4_ify6c"]
 [ext_resource type="Script" path="res://PortSystem/interaction_start_voyage.gd" id="5_l8iw1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sf8km"]
@@ -1610,6 +1612,7 @@ region = Rect2(81, 89, 14, 23)
 radius = 19.0263
 
 [node name="PortScene" type="Node2D"]
+script = ExtResource("1_16oak")
 
 [node name="PortPlayer" parent="." instance=ExtResource("2_abfb1")]
 position = Vector2(163, 80)
@@ -1709,8 +1712,36 @@ position = Vector2(88, 132)
 [node name="Sprite2D" type="Sprite2D" parent="BeginVoyageInteraction"]
 texture = SubResource("AtlasTexture_xf7nj")
 
+[node name="Label2" type="Label" parent="BeginVoyageInteraction/Sprite2D"]
+offset_left = 156.0
+offset_top = -37.0
+offset_right = 218.0
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("4_ify6c")
+text = "Shipyard"
+
 [node name="InteractionManager" parent="BeginVoyageInteraction" groups=["voyage_interaction"] instance=ExtResource("4_b36xf")]
 script = ExtResource("5_l8iw1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeginVoyageInteraction/InteractionManager"]
+shape = SubResource("CircleShape2D_rj2km")
+
+[node name="ShipyardInteraction" type="StaticBody2D" parent="."]
+position = Vector2(275, 132)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShipyardInteraction"]
+texture = SubResource("AtlasTexture_xf7nj")
+
+[node name="Label" type="Label" parent="ShipyardInteraction/Sprite2D"]
+offset_left = -212.0
+offset_top = -37.0
+offset_right = -162.0
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("4_ify6c")
+text = "Voyage"
+
+[node name="InteractionManager" parent="ShipyardInteraction" groups=["shipyard_interaction"] instance=ExtResource("4_b36xf")]
+script = ExtResource("5_l8iw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipyardInteraction/InteractionManager"]
 shape = SubResource("CircleShape2D_rj2km")
