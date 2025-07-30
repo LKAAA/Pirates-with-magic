@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://8oqid1x6xmd"]
 
-[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_mko3v"]
-[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="2_ntlfl"]
-[ext_resource type="Script" path="res://EnemySystem/EnemyData.gd" id="3_mdino"]
+[ext_resource type="Script" uid="uid://dmo31gx6t3jkr" path="res://MoveSystem/attack_move_data.gd" id="1_mko3v"]
+[ext_resource type="Script" uid="uid://bfeofahckehen" path="res://MoveSystem/defense_move_data.gd" id="2_ntlfl"]
+[ext_resource type="Script" uid="uid://ooptrtp7jfk3" path="res://EnemySystem/EnemyData.gd" id="3_mdino"]
 [ext_resource type="Resource" uid="uid://dclfm25ovxvcp" path="res://ShipSystem/ShipTypes/training_dummy.tres" id="4_h5r6k"]
 
 [resource]

@@ -121,7 +121,7 @@ item_3/text = "Magic - Fire"
 item_4/text = "Magic - Resonance"
 item_5/text = "Magic - Spectral"
 item_6/text = "Magic - Ancient"
-item_7/text = "Magic - Arcane"
+item_7/text = "Magic Arcane"
 
 [node name="ShipType2Select" type="ItemList" parent="CanvasLayer/OutOfCombatUI/PlayerInfoEditorUI/VBoxContainer/HBoxContainer/Ship Type"]
 custom_minimum_size = Vector2(200, 1.365)
@@ -139,7 +139,7 @@ item_4/text = "Magic - Fire"
 item_5/text = "Magic - Resonance"
 item_6/text = "Magic - Spectral"
 item_7/text = "Magic - Ancient"
-item_8/text = "Magic - Arcane"
+item_8/text = "Magic Arcane"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OutOfCombatUI/PlayerInfoEditorUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2

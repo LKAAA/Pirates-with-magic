@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShiftMoveData" load_steps=2 format=3 uid="uid://cc6nadj53g2nf"]
 
-[ext_resource type="Script" path="res://MoveSystem/shift_move_data.gd" id="1_5xwov"]
+[ext_resource type="Script" uid="uid://bgje13pwx8qmy" path="res://MoveSystem/shift_move_data.gd" id="1_5xwov"]
 
 [resource]
 script = ExtResource("1_5xwov")

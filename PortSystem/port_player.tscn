@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7clsix3eo258"]
 
-[ext_resource type="Script" path="res://PortSystem/port_player.gd" id="1_mxcce"]
+[ext_resource type="Script" uid="uid://7ea55dbrev0t" path="res://PortSystem/port_player.gd" id="1_mxcce"]
 [ext_resource type="Texture2D" uid="uid://c1mphdwnmmvq3" path="res://Temp Art/s4m_ur4i_huge-assetpack-character-animations.png" id="2_4jqr1"]
-[ext_resource type="Script" path="res://PortSystem/camera_2d.gd" id="3_3f8cv"]
+[ext_resource type="Script" uid="uid://cphspfyhad4vo" path="res://PortSystem/camera_2d.gd" id="3_3f8cv"]
 [ext_resource type="PackedScene" uid="uid://ba16ymv8idawa" path="res://PortSystem/interaction_manager.tscn" id="4_gnl5o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5o1xb"]

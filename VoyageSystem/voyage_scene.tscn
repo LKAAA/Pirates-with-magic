@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0paeod8fh1ef"]
 
-[ext_resource type="Script" path="res://VoyageSystem/voyage_scene.gd" id="1_n8nr2"]
+[ext_resource type="Script" uid="uid://ri7o080qxr7j" path="res://VoyageSystem/voyage_scene.gd" id="1_n8nr2"]
 [ext_resource type="PackedScene" uid="uid://d2evuh2ejf4f" path="res://EnemySystem/enemy.tscn" id="3_jdolg"]
 [ext_resource type="PackedScene" uid="uid://dt26ynqijynb4" path="res://VoyageSystem/voyage_player.tscn" id="4_2klwd"]
 [ext_resource type="Resource" uid="uid://8oqid1x6xmd" path="res://EnemySystem/Enemies/training_dummy.tres" id="4_io7mp"]

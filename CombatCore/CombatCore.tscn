@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://djoqkn041ds2g"]
 
-[ext_resource type="Script" path="res://CombatCore/combatcore.gd" id="1_5p7bh"]
-[ext_resource type="Script" path="res://CombatCore/TurnBasedCombatFSM.gd" id="2_c1tgq"]
-[ext_resource type="Script" path="res://CombatCore/in_combat_ui.gd" id="3_ha0f1"]
+[ext_resource type="Script" uid="uid://chgqwvwuksg6q" path="res://CombatCore/combatcore.gd" id="1_5p7bh"]
+[ext_resource type="Script" uid="uid://bgx0ivr77nf2j" path="res://CombatCore/TurnBasedCombatFSM.gd" id="2_c1tgq"]
+[ext_resource type="Script" uid="uid://cjvhtv5j3wu0m" path="res://CombatCore/in_combat_ui.gd" id="3_ha0f1"]
 [ext_resource type="FontFile" uid="uid://5xyvrcahqhvm" path="res://UI/ark-pixel-16px-proportional-ja.ttf" id="3_p6xct"]
-[ext_resource type="Script" path="res://CombatCore/player_choice_ui.gd" id="4_78eqw"]
+[ext_resource type="Script" uid="uid://s13c8g51rlhq" path="res://CombatCore/player_choice_ui.gd" id="4_78eqw"]
 
 [node name="CombatCore" type="Node2D"]
 script = ExtResource("1_5p7bh")

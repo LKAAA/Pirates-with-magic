@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://cnbrkx65wed7m"]
 
-[ext_resource type="Script" path="res://MoveSystem/attack_move_data.gd" id="1_73rtp"]
+[ext_resource type="Script" uid="uid://dmo31gx6t3jkr" path="res://MoveSystem/attack_move_data.gd" id="1_73rtp"]
 [ext_resource type="Resource" uid="uid://diq2472fifrt8" path="res://MoveSystem/moves/attack/cannonball_a_move.tres" id="2_gnwbk"]
-[ext_resource type="Script" path="res://MoveSystem/defense_move_data.gd" id="2_t1msy"]
-[ext_resource type="Script" path="res://EnemySystem/EnemyData.gd" id="3_enkm4"]
+[ext_resource type="Script" uid="uid://bfeofahckehen" path="res://MoveSystem/defense_move_data.gd" id="2_t1msy"]
+[ext_resource type="Script" uid="uid://ooptrtp7jfk3" path="res://EnemySystem/EnemyData.gd" id="3_enkm4"]
 [ext_resource type="Resource" uid="uid://cnat6v5p74ayq" path="res://MoveSystem/moves/attack/arcane_broadside_a_move.tres" id="3_n68iv"]
 [ext_resource type="Resource" uid="uid://qgudhv4kno3p" path="res://MoveSystem/moves/defense/hull_repair_d_move.tres" id="4_pq608"]
 [ext_resource type="Resource" uid="uid://q2nnx1k3ch15" path="res://MoveSystem/moves/defense/warding_aura.tres" id="6_hipai"]
